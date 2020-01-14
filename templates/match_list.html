@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% render_table table %}
+
+<hr/>
+<form action="" method="get">
+{% crispy filter.form filter.form.helper %}
+<input type="submit" value="Filter"/>
+</form>
+
+{% endblock content %}

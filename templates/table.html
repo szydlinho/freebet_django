@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% block content %}
+
+<div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">Predictions</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+        {% render_table table %}
+
+     </table>
+    </div>
+
+{% endblock %}

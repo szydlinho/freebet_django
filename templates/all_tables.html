@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% block content %}
+
+
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5 col-sm-offset-1">
+          <h2 align="center">Premier League</h2>
+          {% render_table tablee0 %}</div>
+      <div class="col-md-5 col-sm-offset-0.5">
+          <h2 align="center">La Liga</h2>
+          {% render_table tablesp1 %}</div>
+    </div>
+</div>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-5 col-sm-offset-1">
+      <h2 align="center">Bundesliga</h2>
+      {% render_table tabled1 %}</div>
+  <div class="col-md-5 col-sm-offset-0.5">
+      <h2 align="center">Serie A</h2>
+      {% render_table tablei1 %}</div>
+</div>
+    </div>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-5 col-sm-offset-1">
+      <h2 align="center">Ligue 1</h2>
+      {% render_table tablef1 %}</div>
+  <div class="col-md-5 col-sm-offset-0.5">
+      <h2 align="center">Championship</h2>
+      {% render_table tablee1 %}</div>
+</div>
+</div>
+</div>
+{% endblock %}
