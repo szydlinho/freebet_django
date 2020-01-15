@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from decouple import config
-import dj_database_url
+from decouple import config, Csv
+
+
 
 #admin
 #admin

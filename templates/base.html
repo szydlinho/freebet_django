@@ -6,6 +6,7 @@
             <!--This is the meta information which is good for SEO-->
     {% block head-meta %}
   	<meta charset="utf-8">
+    <body id="bg" style="background-image: url('{% static "img/beige-tiles.png" %}')">
   	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
     <meta name="keywords" content="football, predictions, daily tips, betting">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,40 +19,46 @@
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="article" />
     {% endblock %}
-    <link rel="icon" href="{% static 'favicon.ico' %}">
     <title>{% block title %} {{ website_name }} FootballBetPredictions {{ website_name }}{% endblock %}</title>
-     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-     <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'js/jquery.min.js' %}" ></script>
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Custom styles for this template -->
+
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+
+    {% block stylesheet %}{% endblock %}
+
+
 
     </head>
+
+
     {% include 'navbar.html' %}
+
+
+
+
     <body>
+
     {% block content %}
     {% endblock %}
 
-    <footer>
-    <div class= "navbar navbar-inverse navbar-static-bottom" role="navigation">
-        <div class="navbar-text pull-left"></div>
 
-        <div class= "navbar-text pull-right">
-    <!-- Add in your social media / github links here -->
-            <a href="https://github.com/szydlinho">
-                <i class="fa fa-github-square fa-2x"></i></a>
-        </div>
-        <!--Below is the copyright information for the site. You can fill in your own here.-->
-        <div class="navbar-text pull-left">
-        &copy; Analiza danych w piłce nożnej, 2019
-        </div>
-    </div>
+    {% include 'footer.html' %}
 
-
-    </footer>
     </body>
 
 
-<!--This is my javascript block. If you've included the javascript files you need in the 'static' folder then there's no need to
-put this here and you can delete the block below.-->
+
 
 </html>

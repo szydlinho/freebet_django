@@ -3,14 +3,35 @@
 {% block content %}
 
 <div class="container">
-      <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item active">Predictions</li>
-      </ol>
+        <h2  style="color: #28693c;" >Voting clasifier model </h2>
+    <span> Accuracy of last 50 matches: {{ acc_vc|floatformat:-2  }}%</span>
+      <table  class="table">
+        <thead class="thead-inverse">
+        {% render_table table_vc %}
+    <hr>
+     </table>
+
+    </div>
+
+<div class="container">
+        <h2  style="color: #28693c;" >Logistic Regression model</h2>
+     <span> Accuracy of last 50 matches: {{ acc_lr|floatformat:-2  }}%</span>
       <table class="table">
         <thead class="thead-inverse">
-        {% render_table table %}
-
+        {% render_table table_lr %}
+  <hr>
      </table>
     </div>
+
+<div class="container">
+        <h2  style="color: #28693c;" >Decision tree model</h2>
+     <span> Accuracy of last 50 matches: {{ acc_dt|floatformat:-2  }}%</span>
+      <table class="table">
+        <thead class="thead-inverse">
+        {% render_table table_dt %}
+  <hr>
+     </table>
+    </div>
+
 
 {% endblock %}

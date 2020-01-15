@@ -1,58 +1,38 @@
-<header>
-  <div class="container">
-    <div class= "navbar-wrapper">
-      <div class="container-fluid">
-        <nav class = "navbar navbar-inverse navbar-fixed-top" id="navbar_whole">
-          <div class = "navbar-header">
-            <!--Below is the top-left hand side of the screen where you usually see a company/project name and a logo-->
-            <!--The next line sends the user back to the home page-->
-            <a class="active" href="{% url 'home' %}"><i class="fa fa-fw fa-home"></i>FootballBetTips</a>
-                                    <!--Insert the file name of your brand image below after the 'img'-->
 
-              <div id= "navbar" class="navbar">
-                                <ul class="nav navbar-nav">
-                                  <!--Below is where you put the rest of the links to the pages you've created. Please reference your own models
-                                   in Django.-->
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="{% url 'league_tab' abb='E0' %}">Premier League</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'league_tab' abb='D1' %}">Bundesliga</a>
-                                    </li>
-                                     <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'league_tab' abb='SP1' %}" >La Liga</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'league_tab' abb='F1' %}">France</a>
-                                    </li>
+<nav class="navbar navbar-expand-sm navbar-custom">
+
+         <div class="container-fluid">
+        <!-- Brand -->
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        FootballBetTips <i class="fa fa-soccer-ball-o"></i></a><span class="sr-only">(current)</span></a>
 
 
+            <!-- Links -->
 
-                                 <div class="dropdown">
-                                    <button class="dropbtn">Dropdown
-                                      <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                      <a href="#">Link 1</a>
-                                      <a href="#">Link 2</a>
-                                      <a href="#">Link 3</a>
-                                    </div>
-                                  </div>
+                <li class="nav-item "><a class="nav-link" href="{% url 'league_tab' abb='E0' %}">Premier League</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='D1' %}">Bundesliga</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='SP1' %}" >La Liga</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='F1' %}">France</a></li>
 
-                                  </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Dropdown link</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+                </li>
 
 
-                                    <ul class="topnav-right disabled">
+        </ul>
+                             <li class="nav navbar-nav navbar-right">
+                                 <a class="nav-link" href="https://github.com/szydlinho">
+                         <i class="fa fa-github-square"></i></a><span class="sr-only"></span></a>
+                     <a class="nav-link" href="/blog/">Projects</a>
+                </li>
+    </nav>
+</div>
 
-                                            <a class="nav-link" href="/blog/">Projects</a>
-
-                                    </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
 
 
