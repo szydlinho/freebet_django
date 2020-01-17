@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 class Matches_Pred(models.Model):
@@ -13,6 +15,17 @@ class Matches_Pred(models.Model):
     result_binary =  models.IntegerField()
     corrected =  models.IntegerField()
     proba = models.FloatField(default=0)
+
+    def __str__(self):
+        return "{} {} {} {} {} {}".format( self.date,self.league, self.model, self.HomeTeam, self.AwayTeam,  self.prediction)
+
+    def save(self, *args, **kwargs):
+        self.abb = slugify(self.league)
+        super().save(*args, **kwargs)
+
+#    def get_absolute_url(self):
+#        return reverse('league_tab',
+#                       args=[str(self.abb)])
 
 
 
@@ -29,6 +42,17 @@ class Matches_Pred_History(models.Model):
     corrected =  models.IntegerField()
     proba = models.FloatField(default=0)
 
+    def __str__(self):
+        return "{} {} {} {} {} {}".format( self.date,self.league, self.model, self.HomeTeam, self.AwayTeam,  self.prediction)
+
+    def save(self, *args, **kwargs):
+        self.abb = slugify(self.league)
+        super().save(*args, **kwargs)
+
+#    def get_absolute_url(self):
+#        return reverse('league_tab',
+#                       args=[str(self.abb)])
+
 
 
 class Matches_Pred_Upcoming(models.Model):
@@ -40,3 +64,14 @@ class Matches_Pred_Upcoming(models.Model):
     model = models.CharField(max_length=5)
     prediction = models.CharField(max_length=5)
     proba = models.FloatField(default=0)
+
+    def __str__(self):
+        return "{} {} {} {} {} {}".format( self.date,self.league, self.model, self.HomeTeam, self.AwayTeam,  self.prediction)
+
+    def save(self, *args, **kwargs):
+        self.abb = slugify(self.league)
+        super().save(*args, **kwargs)
+
+#    def get_absolute_url(self):
+#        return reverse('league_tab',
+#                       args=[str(self.abb)])

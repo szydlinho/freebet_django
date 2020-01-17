@@ -47,8 +47,12 @@ INSTALLED_APPS = [
     'django_tables2',
     'tables',
     'blog',
-
-
+    'django_filters',
+    'crispy_forms',
+    'highcharts',
+    'bootstrap3',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
 ]
 
@@ -60,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'predtable.urls'
@@ -86,7 +92,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -148,12 +154,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -1,5 +1,13 @@
+import pandas as pd
+import numpy as np
+from django.db.models import Count, Q
+import json
+
 from django.shortcuts import render
-from django.forms.utils import flatatt
+from django.http import Http404
+from django_tables2 import SingleTableView
+
+from django.shortcuts import render, get_object_or_404
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 from .filters import MatchesListFilter
@@ -57,7 +65,83 @@ def matches_list_view_base(request):
 
 
 class SearchView(SingleTableMixin, FilterView):
-    model = Matches_Pred
-    table_class = Matches_Pred
+    model = Matches_Pred_History
+    table_class = Pred_Table_History
     template_name = "template.html"
     filter_class = MatchesListFilter
+
+
+
+def model_class_view(request):
+    dataset = Matches_Pred_History.objects \
+        .values('model') \
+        .annotate(corrected_count=Count('model', filter=Q(corrected=1)),
+                  not_corrected_count=Count('model', filter=Q(corrected=0))) \
+        .order_by('corrected_count')
+
+    categories = list()
+    corrected_series = list()
+    not_corrected_series = list()
+
+    for entry in dataset:
+        categories.append(entry['model'])
+        corrected_series.append(entry['corrected_count'])
+        not_corrected_series.append(entry['not_corrected_count'])
+
+    dataset_league = Matches_Pred_History.objects \
+        .values('league') \
+        .annotate(corrected_count_l=Count('league', filter=Q(corrected=1)),
+                  not_corrected_count_l=Count('league', filter=Q(corrected=0))) \
+        .order_by('corrected_count_l')
+
+    categories_l = list()
+    corrected_series_l = list()
+    not_corrected_series_l = list()
+
+    for entry in dataset_league:
+        categories_l.append( entry['league'])
+        corrected_series_l.append(entry['corrected_count_l'])
+        not_corrected_series_l.append(entry['not_corrected_count_l'])
+
+
+    dataset_prc = Matches_Pred_History.objects.reverse()
+    dataset_prc_df = pd.DataFrame(list(dataset_prc.values()))
+    dataset_prc_df.replace('', np.nan, inplace=True)
+    dataset_prc_df = dataset_prc_df.groupby(['model', 'corrected']).agg({'corrected': 'count'})
+
+    dataset_prc_df = dataset_prc_df.groupby(level=0).apply(lambda x: 100 * x / float(x.sum()))
+    dataset_prc_df.columns = ["corrected_prc"]
+    dataset_prc_df.reset_index(inplace= True)
+    dataset_prc_df = dataset_prc_df.loc[dataset_prc_df.corrected == 1]
+    dataset_prc_df = dataset_prc_df.sort_values('corrected_prc')
+    dataset_prc_df = dataset_prc_df[['model', 'corrected_prc']]
+    dataset_prc_df.corrected_prc = dataset_prc_df.corrected_prc.round(2)
+    dataset_prc_json = dataset_prc_df.to_json(orient='records')
+    dataset_prc_json = json.loads(dataset_prc_json)
+
+    categories_prc = list()
+    corrected_prc = list()
+
+    for entry in dataset_prc_json:
+        categories_prc.append(entry['model'])
+        corrected_prc.append(entry['corrected_prc'])
+
+
+    return render(request, 'model.html', {
+        'categories': json.dumps(categories),
+        'corrected_series': json.dumps(corrected_series),
+        'not_corrected_series': json.dumps(not_corrected_series),
+        'categories_l': json.dumps(categories_l),
+        'corrected_series_l': json.dumps(corrected_series_l),
+        'not_corrected_series_l': json.dumps(not_corrected_series_l),
+        'categories_prc': json.dumps(categories_prc),
+        'corrected_prc': json.dumps(corrected_prc)
+    })
+
+
+def detail(request, abb=None):
+    league = get_object_or_404(Matches_Pred.objects.values('league').distinct(), abb=abb)
+
+    return render(request,
+                  'pred/detail.html',
+                  {'league': league})

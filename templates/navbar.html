@@ -1,36 +1,45 @@
 
-<nav class="navbar navbar-expand-sm navbar-custom">
+<nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
 
          <div class="container-fluid">
         <!-- Brand -->
                 <ul class="navbar-nav">
-                    <a class="nav-link" href="{% url 'home' %}">
+
+
+                    <a class="navbar-brand" href="{% url 'home' %}">
                         FootballBetTips <i class="fa fa-soccer-ball-o"></i></a><span class="sr-only">(current)</span></a>
 
 
             <!-- Links -->
 
-                <li class="nav-item "><a class="nav-link" href="{% url 'league_tab' abb='E0' %}">Premier League</a></li>
+                <li class="nav-item active "><a class="nav-link" href="{% url 'league_tab' abb='E0' %}">Premier League</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='D1' %}">Bundesliga</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='SP1' %}" >La Liga</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'league_tab' abb='F1' %}">France</a></li>
 
-                <!-- Dropdown -->
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Dropdown link</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-                </li>
+
+
+                    <li class="nav-item active"><a class="nav-link" href="{% url 'charts'  %}">Acc plots <i class="fa fa-bar-chart"></i></a><span class="sr-only">(current)</span></a></li>
 
 
         </ul>
-                             <li class="nav navbar-nav navbar-right">
+
+             <ul class="nav navbar-nav navbar-right">
+                                                     <!-- Dropdown -->
+                <li class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Models</a>
+                <div class="dropdown-menu ">
+                    <a class="dropdown-item" href="#">Voting clasifier</a>
+                    <a class="dropdown-item" href="#">Logistic regression</a>
+                    <a class="dropdown-item" href="#">Decision tree</a>
+                    <a class="dropdown-item" href="#">Random forest</a>
+                </div>
+                </li>
+                 <a class="nav-link"><a class="nav-link" href="{% url 'search-view'  %}">Search <i class="fa fa-search"></i></a><span class="sr-only">(current)</span></a>
                                  <a class="nav-link" href="https://github.com/szydlinho">
                          <i class="fa fa-github-square"></i></a><span class="sr-only"></span></a>
-                     <a class="nav-link" href="/blog/">Projects</a>
-                </li>
+
+                </a>
+             </ul>
     </nav>
 </div>
 

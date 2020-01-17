@@ -19,7 +19,7 @@ class Pred_Table_Summary(tables.Table):
     #corrected = tables.Column(attrs={"td": {"bgcolor": "blue"}})
 
     corrected = tables.Column(attrs={
-        "td": {"bgcolor":data_corrected }
+        "td": {"align": "center", "bgcolor": data_corrected}
     })
     class Meta:
         model = Matches_Pred
@@ -31,7 +31,7 @@ class Pred_Table(tables.Table):
     #corrected = tables.Column(attrs={"td": {"bgcolor": "blue"}})
 
     corrected = tables.Column(attrs={
-        "td": {"bgcolor":data_corrected }
+        "td": {"align": "center", "bgcolor": data_corrected}
     })
     class Meta:
         model = Matches_Pred
@@ -61,3 +61,16 @@ class Pred_Table_History(tables.Table):
         template_name = "django_tables2/bootstrap.html"
         fields = ("date", "MW", "model", "HomeTeam", "AwayTeam",
                               "prediction", "Result",  "corrected" )
+
+
+class MatchesTable(tables.Table):
+    class Meta:
+        attrs = {"class": "table table-striped table-hover cabecera-azul"}
+        model = Matches_Pred_History
+        fields = ("date","league", "HomeTeam", "AwayTeam", "model",
+                              "prediction", "Result",  "corrected" )
+        empty_text = (
+            "No data to show. Try to input exact string."
+        )
+        template_name = "django_tables2/bootstrap.html"
+        per_page = 30

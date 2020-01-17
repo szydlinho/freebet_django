@@ -1,12 +1,44 @@
-<footer class="footer">
+<!-- Site footer -->
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">FootballBetTips.com <i>Free   </i> weakly betting tips for top european football leagues. All predictions habe been made based on Machine Learning algorithms which were developed my myself. For now there is only two category outcome for game: 1 - home team victory and 0 - draw or away team victory. </p>
+          </div>
 
-                <nav class="navbar navbar-expand-sm navbar-custom">
-                  <a class="navbar-brand" href="https://analizadanychwpilce.com/">&copy; Analiza danych w piłce nożnej, 2019</a>
-                <div class= "navbar-text pull-right">
-                    <!-- Add in your social media / github links here -->
-                            <a href="https://github.com/szydlinho">
-                                <i class="fa fa-github-square fa-2x"></i></a>
-                        </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
 
-                </nav>
-        </footer>
+              <li><a href="{% url 'home' %}">Home page</a></li>
+              <li><a href="{% url 'search-view' %}">Search through the history matches</a></li>
+              <li><a href="{% url 'charts' %}">Accuracy plots</a></li>
+
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+         <a href="https://analizadanychwpilce.com/">Analiza danych w piłce nożnej</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+<!--              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li> -->
+              <li><a class="twitter" href="https://twitter.com/szydlinho"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="https://analizadanychwpilce.com/"><i class="fa fa-dribbble"></i></a></li>
+                <li><a class="github" href="https://github.com/szydlinho"><i class="fa fa-github-square"></i></a></li>
+<!--               <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>

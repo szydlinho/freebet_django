@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from tables.views import matches_list_view, matches_list_view_base
+from tables.views import matches_list_view, matches_list_view_base,  SearchView, model_class_view
 
 
 
@@ -28,6 +28,8 @@ urlpatterns = [
     path('pred/<str:abb>/', matches_list_view, name='league_tab'),
     path('', matches_list_view_base),
     path("blog/", include("blog.urls")),
+    path("search/", SearchView.as_view(), name="search-view"),
+    path('charts/', view=model_class_view, name='charts'),
 
 #    path('pred/table/', MatchList.as_view(), name='author_table'),
 
@@ -37,5 +39,4 @@ import re
 #if re.match(r"pred/(?P<league_abb>[\w-]+)/$", "pred/E0/"):
 #     print("Y")
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+

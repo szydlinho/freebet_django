@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<div id="container" style="min-width: 200px; height: 400px; margin: 100 auto" class="container"></div>
+
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+<script>
+  Highcharts.chart('container', {
+      chart: {
+          type: 'column',
+          backgroundColor: 'transparent'
+      },
+      title: {
+          text: 'Corrected count by model'
+      },
+      xAxis: {
+          categories: {{ categories|safe }}
+      },
+      yAxis: {
+
+          title: {text : 'Number of predictions'}
+      },
+      series: [{
+          name: 'Corrected',
+          data: {{ corrected_series }},
+          color: 'green'
+      }, {
+          name: 'Not Corrected',
+          data: {{ not_corrected_series }},
+          color: 'red'
+      }]
+  });
+</script>
+<br>
+<div id="container2" style="min-width: 200px; height: 400px; margin: 100 auto" class="container"></div>
+
+
+
+<script>
+  Highcharts.chart('container2', {
+      chart: {
+          type: 'column',
+          backgroundColor: 'transparent'
+      },
+      title: {
+          text: 'Corrected count by league'
+      },
+      xAxis: {
+          categories: {{ categories_l|safe }}
+
+      },
+      yAxis: {
+
+          title: {text : 'Number of predictions'}
+      },
+      series: [{
+          name: 'Corrected',
+          data: {{ corrected_series_l }},
+          color: 'green'
+      }, {
+          name: 'Not Corrected',
+          data: {{ not_corrected_series_l }},
+          color: 'red'
+      }]
+  });
+</script>
+
+<br>
+
+<div id="container3" style="min-width: 200px; height: 400px; margin: 100 auto" class="container"></div>
+
+
+
+<script>
+  Highcharts.chart('container3', {
+      chart: {
+          type: 'column',
+          backgroundColor: 'transparent'
+      },
+      title: {
+          text: 'Corrected count by league'
+      },
+      xAxis: {
+          categories: {{ categories_prc|safe }}
+      },
+      yAxis: {
+          min : 50,
+          title: {text : 'Prc of corrected prediciton [%]'}
+      },
+      series: [{
+          name: 'Corrected prc',
+          data: {{ corrected_prc }},
+          color: 'green'
+      }]
+  });
+</script>
+<br>
+{% endblock content %}
