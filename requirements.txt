@@ -11,7 +11,7 @@ django-crispy-forms==1.8.1
 django-filter==2.2.0
 django-filters==0.2.1
 django-heroku==0.3.1
-django-highcharts==0.1.7
+git+git://github.com/ernestoarbitrio/django-highcharts
 django-modelcluster==5.0.1
 django-tables2==2.2.1
 django-taggit==1.2.0
