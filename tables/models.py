@@ -43,11 +43,15 @@ class Matches_Pred_History(models.Model):
     proba = models.FloatField(default=0)
 
     def __str__(self):
-        return "{} {} {} {} {} {}".format( self.date,self.league, self.model, self.HomeTeam, self.AwayTeam,  self.prediction)
+        return "{} {} {} {} {} {}".format( self.date,self.league, self.model, self.HomeTeam, self.AwayTeam,
+                                           self.prediction)
 
     def save(self, *args, **kwargs):
-        self.abb = slugify(self.league)
+        self.league = slugify(self.league)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f'/pred/{self.league}'
 
 #    def get_absolute_url(self):
 #        return reverse('league_tab',
