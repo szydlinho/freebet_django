@@ -145,3 +145,7 @@ def detail(request, abb=None):
     return render(request,
                   'pred/detail.html',
                   {'league': league})
+
+
+def coming_soon(request):
+    return render(request,'coming_soon.html')
