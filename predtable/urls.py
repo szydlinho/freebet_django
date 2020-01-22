@@ -27,6 +27,7 @@ sitemaps = {'static': StaticViewSitemap, 'snippet': MatchesSitemap}
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', matches_list_view_base, name='home'),
+    path('', include('webmaster_verification.urls')),
     path('pred/<str:abb>/', matches_list_view, name='league_tab'),
     path('', matches_list_view_base),
     path("blog/", include("blog.urls")),
