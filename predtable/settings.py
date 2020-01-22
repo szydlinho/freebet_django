@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'webmaster_verification',
+#    'webmaster_verification',
 
 
 ]
@@ -165,8 +165,3 @@ import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
-WEBMASTER_VERIFICATION = {
-
-    'google': 'google-site-verification=sH-13fg5ANRSQm0QwDyGKbfOjtmKMcPmm7g3IFa4uo4e',
-
-}
