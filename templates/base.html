@@ -3,10 +3,8 @@
 <!doctype html>
 <html>
     <head>
-            <!--This is the meta information which is good for SEO-->
     {% block head-meta %}
   	<meta charset="utf-8">
-    <body id="bg" style="background-image: url('{% static "img/dust_scratches.png" %}')">
   	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
     <meta name="keywords" content="football, predictions, daily tips, betting">
     <meta name="description" content="Football predictions for betting." />
@@ -21,10 +19,11 @@
     <meta property="og:type" content="article" />
     {% endblock %}
     <title>FootballBetPredictions</title>
+
     <!-- Bootstrap core CSS -->
 
     <script src="{% static 'js/jquery.min.js' %}" ></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -33,33 +32,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
     {% block stylesheet %}{% endblock %}
-
 
 
     </head>
 
-
     {% include 'navbar.html' %}
-
-
-
-
-    <body>
+<body id="bg" style="background-image: url('{% static 'img/dust_scratches.png' %}')">
 
     {% block content %}
     {% endblock %}
 
-
+</body>
     {% include 'footer.html' %}
 
-    </body>
+
 
 
 
