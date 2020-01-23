@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from tables.views import matches_list_view, matches_list_view_base,  SearchView, model_class_view, coming_soon
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
 
 from tables.sitemaps import StaticViewSitemap, MatchesSitemap
 
@@ -34,6 +35,7 @@ urlpatterns = [
     path('charts/', view=model_class_view, name='charts'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('models/', view=coming_soon, name='models'),
+    path('robots.txt',  TemplateView.as_view(template_name="robots.txt", content_type='text/plain'))
 #    path('pred/table/', MatchList.as_view(), name='author_table'),
 
  #   path("pred2/",    matches_list_view2)
