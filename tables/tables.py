@@ -45,6 +45,7 @@ class Pred_Table_Upcoming(tables.Table):
     #corrected = tables.Column(attrs={"td": {"bgcolor": "blue"}})
 
     class Meta:
+        attrs = {"class": "table table-striped table-bordered cabecera-azul"}
         model = Matches_Pred_Upcoming
         template_name = "django_tables2/bootstrap.html"
         fields = ("date", "HomeTeam", "AwayTeam", "prediction", "proba")
@@ -57,6 +58,7 @@ class Pred_Table_History(tables.Table):
         "td": {"bgcolor":data_corrected }
     })
     class Meta:
+        attrs = {"class": "table table-striped table-bordered cabecera-azul"}
         model = Matches_Pred_History
         template_name = "django_tables2/bootstrap.html"
         fields = ("date", "MW", "model", "HomeTeam", "AwayTeam",
