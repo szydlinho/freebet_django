@@ -4,7 +4,7 @@
 
 <div class="container">
         <h2  style="color: #28693c;" >Voting clasifier model </h2>
-    <span> Accuracy of last 50 matches: {{ acc_vc|floatformat:-2  }}%</span>
+    <span> Accuracy of all last matches in season: {{ acc_vc|floatformat:-2  }}%</span>
       <table  class="table">
         <thead class="thead-inverse">
         {% render_table table_vc %}
@@ -15,7 +15,7 @@
 
 <div class="container">
         <h2  style="color: #28693c;" >Logistic Regression model</h2>
-     <span> Accuracy of last 50 matches: {{ acc_lr|floatformat:-2  }}%</span>
+     <span> Accuracy of all last matches in season: {{ acc_lr|floatformat:-2  }}%</span>
       <table class="table">
         <thead class="thead-inverse">
         {% render_table table_lr %}
@@ -25,7 +25,7 @@
 
 <div class="container">
         <h2  style="color: #28693c;" >Decision tree model</h2>
-     <span> Accuracy of last 50 matches: {{ acc_dt|floatformat:-2  }}%</span>
+     <span>Accuracy of all last matches in season: {{ acc_dt|floatformat:-2  }}%</span>
       <table class="table">
         <thead class="thead-inverse">
         {% render_table table_dt %}

@@ -53,7 +53,7 @@ def matches_list_view_base(request):
 
 
     tablee0 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='E0', model='ECL').order_by('-MW', 'date')[:10])
-    tabled1 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='D1', model='ECL').order_by('-MW', 'date')[:10])
+    tabled1 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='D1', model='ECL').order_by('-MW', 'date')[:9])
     tablesp1 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='SP1', model='ECL').order_by('-MW', 'date')[:10])
     tablei1 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='I1', model='ECL').order_by('-MW', 'date')[:10])
     tablef1 = Pred_Table_Upcoming(Matches_Pred_Upcoming.objects.filter(league='F1', model='ECL').order_by('-MW', 'date')[:10])
