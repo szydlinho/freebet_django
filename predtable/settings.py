@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from decouple import config, Csv
 import django_heroku
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 #admin
@@ -25,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -102,11 +105,11 @@ DATABASES = {
     }
     ,
     'users': {
-        'NAME': 'S72t1V5idn',
+        'NAME': os.getenv('DATABASE_NAME') ,
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'S72t1V5idn',
-        'PASSWORD': 'dEewXLcrbR',
-        'HOST': 'remotemysql.com',
+        'USER': os.getenv('DATABASE_USER') ,
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
         'PORT': ''
     }
 }
